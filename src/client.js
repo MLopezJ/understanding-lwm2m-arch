@@ -13,12 +13,14 @@ so.init('temperature', 0, {
 
 console.log(so)
 
-var cnode = new CoapNode('urn:imei:000000000000004', so);
+var cnode = new CoapNode('urn:imei:000000000000004', so, {version:'1.2', "lifetime":180});
 
 cnode.on('registered', function () {
     // If the registration procedure completes successfully, 'registered' will be fired
 
     // after registered, start your application
+
+    console.log("registered successfully")
 });
 
 
@@ -28,6 +30,6 @@ const localhost = '127.0.0.1'
 //const coiote = "eu.iot.avsystem.cloud"
 
 cnode.register(localhost, 5683, function (err, rsp) {
-    console.log(err)
-    console.log(rsp);      // { status: '2.05' }
+    console.log({err})
+    console.log({rsp});      // { status: '2.05' }
 });

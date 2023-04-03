@@ -20,8 +20,13 @@ cnode.on('registered', function () {
     // after registered, start your application
 });
 
+
 // register to a Server with its ip and port
-cnode.register('127.0.0.1', 5683, function (err, rsp) {
+
+const localhost = '127.0.0.1'
+//const coiote = "eu.iot.avsystem.cloud"
+
+cnode.register(localhost, 5683, function (err, rsp) {
     console.log(err)
     console.log(rsp);      // { status: '2.05' }
 });

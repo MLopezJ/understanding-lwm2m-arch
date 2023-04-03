@@ -26,9 +26,10 @@ cnode.on('registered', function () {
 
 // register to a Server with its ip and port
 
-const coiote = "eu.iot.avsystem.cloud"
+//const coiote = "eu.iot.avsystem.cloud"
+const localhost = '127.0.0.1'
 
-cnode.bootstrap(coiote, 5684, function (err, rsp) {
+cnode.bootstrap(localhost, 5683, function (err, rsp) {
     console.log({err})
     console.log({rsp});      // { status: '2.05' }
 });

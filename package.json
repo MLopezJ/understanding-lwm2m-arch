@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "coap-node": "0.2.8"
+    "coap-node": "0.2.8",
+    "lwm2m-bs-server": "^0.0.4"
   }
 }

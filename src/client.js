@@ -13,7 +13,8 @@ so.init('temperature', 0, {
 
 console.log(so)
 
-var cnode = new CoapNode('device', so);
+var cnode = new CoapNode('urn:imei:000000000000004', so);
+
 cnode.on('registered', function () {
     // If the registration procedure completes successfully, 'registered' will be fired
 

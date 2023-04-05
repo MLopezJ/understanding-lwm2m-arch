@@ -7,6 +7,12 @@ Interact with LwM2M architecture components: Client, Server and Bootstrap Server
 
 > Tried to use https://github.com/PeterEB/coap-shepherd as the server but repo was not able to download. 
 
+## Install
+```
+npm install
+```
+
+
 ## Connection Client-Server
 ### Run Server
 ```

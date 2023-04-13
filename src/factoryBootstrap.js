@@ -20,7 +20,7 @@ const port = 5683
 // const localhost = '127.0.0.1'
 const coiote = "eu.iot.avsystem.cloud"
 const leshan = "leshan.eclipseprojects.io"
-const useCoiote = true
+const useCoiote = false
 
 // initialize Resources that follow IPSO definition
 var LwM2MObjects = new SmartObject();
@@ -54,6 +54,20 @@ LwM2MObjects.init(1, 0, {
 });
 // instance 0
 
+/**
+ * Object: Device
+ * Link: https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/version_history/3-1_1.xml
+ */
+LwM2MObjects.init(3, 0, {
+    0: "Nordic", // Manufacturer
+    1: "00010", // Model Number
+    2: "00000", // Serial Number
+    3: "0.0",// Firmware Version
+    4: false, // Reboot
+    6: "1", // Available Power Sources --> 1: Internal Battery
+    9: 80 , // Battery Level
+    16: "U", // Supported Binding and Modes
+});
 
 console.log(LwM2MObjects.objectList());
 

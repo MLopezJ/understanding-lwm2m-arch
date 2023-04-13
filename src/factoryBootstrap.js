@@ -29,7 +29,7 @@ var LwM2MObjects = new SmartObject();
  * Object: LWM2M Security
  * Link: https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/version_history/0-1_1.xml
  */
-so.init(0, 0, {
+LwM2MObjects.init(0, 0, {
     0: "coap://leshan.eclipseprojects.io:5683", // LWM2M  Server URI
     1: false, // Bootstrap-Server
     2: 3, // Security Mode
@@ -45,7 +45,7 @@ so.init(0, 0, {
  * Object: LWM2M Server
  * Link: https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/version_history/1-1_1.xml
  */
-so.init(1, 0, {
+LwM2MObjects.init(1, 0, {
     0: 1, // Short Server ID
     1: 180, // Lifetime
     6: false, // Notification Storing When Disabled or Offline

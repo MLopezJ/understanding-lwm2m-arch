@@ -10,7 +10,7 @@ var SmartObject = require('smartobject');
 var CoapNode = require('coap-node');
  
 const LwM2MVersion = "1.1"
-const LwM2MServerLifetime = 61
+const LwM2MServerLifetime = 59
 const deviceName = "urn:imei:000000000000005"
 const port = 5683
 

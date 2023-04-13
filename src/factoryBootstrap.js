@@ -18,8 +18,9 @@ const port = 5683
  * LwM2M SERVERS options
  */ 
 // const localhost = '127.0.0.1'
-// const coiote = "eu.iot.avsystem.cloud"
+const coiote = "eu.iot.avsystem.cloud"
 const leshan = "leshan.eclipseprojects.io"
+const useCoiote = true
 
 // initialize Resources that follow IPSO definition
 var LwM2MObjects = new SmartObject();
@@ -30,14 +31,13 @@ var LwM2MObjects = new SmartObject();
  * Link: https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/version_history/0-1_1.xml
  */
 LwM2MObjects.init(0, 0, {
-    0: "coap://leshan.eclipseprojects.io:5683", // LWM2M  Server URI
+    0: useCoiote ? "coap://eu.iot.avsystem.cloud:5683" : "coap://leshan.eclipseprojects.io:5683", // LWM2M  Server URI
     1: false, // Bootstrap-Server
     2: 3, // Security Mode
     3: "",// ** Public Key or Identity
     4: "",// ** Server Public Key
     5: "",// ** Secret Key
     10: 1 // Short Server ID
-
 });
 
 
@@ -52,12 +52,12 @@ LwM2MObjects.init(1, 0, {
     7: "U",// Binding
     8: "true",// Registration Update Trigger
 });
+// instance 0
 
 
+console.log(LwM2MObjects.objectList());
 
-LwM2MObjects.objectList();
-
-
+// instance 1
 var cnode = new CoapNode(deviceName, LwM2MObjects, {version:LwM2MVersion, "lifetime":LwM2MServerLifetime});
 
 cnode.on('registered', function () {
@@ -66,7 +66,7 @@ cnode.on('registered', function () {
     console.log("registered successfully!!!!!")
 });
 
-cnode.register(leshan, port, function (err, rsp) {
+cnode.register(useCoiote ? coiote : leshan, port, function (err, rsp) {
     console.log({err})
     console.log({rsp});      // { status: '2.05' }
 });

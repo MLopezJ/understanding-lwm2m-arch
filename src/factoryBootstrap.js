@@ -20,7 +20,7 @@ const port = 5683
 // const localhost = '127.0.0.1'
 const coiote = "eu.iot.avsystem.cloud"
 const leshan = "leshan.eclipseprojects.io"
-const useCoiote = true
+const useCoiote = false
 
 // initialize Resources that follow IPSO definition
 var LwM2MObjects = new SmartObject();

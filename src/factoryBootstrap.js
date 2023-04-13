@@ -69,9 +69,34 @@ LwM2MObjects.init(3, 0, {
     16: "U", // Supported Binding and Modes
 });
 
-console.log(LwM2MObjects.objectList());
+// temperature object
+LwM2MObjects.init(3303, 0, {
+    sensorValue: 21,
+    units: 'C',
+    5702: {
+        read: function (cb) {
+            var time = new Date();
+            cb(null, time.toString());
+        }
+    },
+    5703: {
+        write: function (val, cb) {     
+            console.log('write ' + val);  
+            cb(null, val);
+        }
+    },
+    5704: {
+        exec: function (val1, val2, cb) {
+            console.log(val1 + ': Hello ' + val2 + '!');
+            cb(null);
+        }
+    }
+});
+
+console.log(LwM2MObjects.objectList(), "Object list");
 
 // instance 1
+// Object initialization
 var cnode = new CoapNode(deviceName, LwM2MObjects, {version:LwM2MVersion, "lifetime":LwM2MServerLifetime});
 
 cnode.on('registered', function () {

@@ -47,7 +47,7 @@ LwM2MObjects.init(0, 0, {
  */
 LwM2MObjects.init(1, 0, {
     0: 1, // Short Server ID
-    1: 180, // Lifetime
+    1: 60, // Lifetime
     6: false, // Notification Storing When Disabled or Offline
     7: "U",// Binding
     8: "true",// Registration Update Trigger

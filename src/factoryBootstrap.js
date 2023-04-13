@@ -1,9 +1,9 @@
 /**
  * File created to try to set Factory Bootstrap values
  * 
- * Server and Security LwM2M Objects will be created
+ * Server and Security LwM2M Objects are set in CoapNode.prototype.configure method from node_modules/coap-node/lib/coap-node.js file
  * 
- * The LwM2M server is coap://leshan.eclipseprojects.io:5683
+ * Device LwM2M object is set in init.setupNode method from node_modules/coap-node/lib/init.js file
  */
 
 var SmartObject = require('smartobject');
@@ -20,54 +20,16 @@ const port = 5683
 // const localhost = '127.0.0.1'
 const coiote = "eu.iot.avsystem.cloud"
 const leshan = "leshan.eclipseprojects.io"
-const useCoiote = false
+const useCoiote = true
 
 // initialize Resources that follow IPSO definition
 var LwM2MObjects = new SmartObject();
 
 
-/**
- * Object: LWM2M Security
- * Link: https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/version_history/0-1_1.xml
- */
-LwM2MObjects.init(0, 0, {
-    0: useCoiote ? "coap://eu.iot.avsystem.cloud:5683" : "coap://leshan.eclipseprojects.io:5683", // LWM2M  Server URI
-    1: false, // Bootstrap-Server
-    2: 3, // Security Mode
-    3: "",// ** Public Key or Identity
-    4: "",// ** Server Public Key
-    5: "",// ** Secret Key
-    10: 1 // Short Server ID
-});
+// Factory Bootstrap Initialization happening in CoapNode.prototype.configure method from node_modules/coap-node/lib/coap-node.js file
 
+// Device initialization happening in init.setupNode method from node_modules/coap-node/lib/init.js file
 
-/**
- * Object: LWM2M Server
- * Link: https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/version_history/1-1_1.xml
- */
-LwM2MObjects.init(1, 0, {
-    0: 1, // Short Server ID
-    1: 60, // Lifetime
-    6: false, // Notification Storing When Disabled or Offline
-    7: "U",// Binding
-    8: "true",// Registration Update Trigger
-});
-// instance 0
-
-/**
- * Object: Device
- * Link: https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/version_history/3-1_1.xml
- */
-LwM2MObjects.init(3, 0, {
-    0: "Nordic", // Manufacturer
-    1: "00010", // Model Number
-    2: "00000", // Serial Number
-    3: "0.0",// Firmware Version
-    4: false, // Reboot
-    6: "1", // Available Power Sources --> 1: Internal Battery
-    9: 80 , // Battery Level
-    16: "U", // Supported Binding and Modes
-});
 
 // temperature object
 LwM2MObjects.init(3303, 0, {
@@ -95,7 +57,6 @@ LwM2MObjects.init(3303, 0, {
 
 console.log(LwM2MObjects.objectList(), "Object list");
 
-// instance 1
 // Object initialization
 var cnode = new CoapNode(deviceName, LwM2MObjects, {version:LwM2MVersion, "lifetime":LwM2MServerLifetime});
 

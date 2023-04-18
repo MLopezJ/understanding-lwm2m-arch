@@ -10,7 +10,8 @@ var SmartObject = require('smartobject');
 var CoapNode = require('coap-node');
  
 const LwM2MVersion = "1.1"
-const LwM2MServerLifetime = 59
+// // During "Register" or "Update" operations, the parameter Lifetime – if present – MUST match the current value of the Mandatory Lifetime Resource of the LwM2M Server Object Instance
+const LwM2MServerLifetime = 60
 const deviceName = "urn:imei:000000000000005"
 const port = 5683
 
@@ -20,7 +21,7 @@ const port = 5683
 // const localhost = '127.0.0.1'
 const coiote = "eu.iot.avsystem.cloud"
 const leshan = "leshan.eclipseprojects.io"
-const useCoiote = false
+const useCoiote = true
 
 // initialize Resources that follow IPSO definition
 var LwM2MObjects = new SmartObject();

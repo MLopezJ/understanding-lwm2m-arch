@@ -12,6 +12,32 @@ Interact with LwM2M architecture components: Client, Server and Bootstrap Server
 npm install
 ```
 
+## Factory Bootstrap
+To execute the factory bootstrap is required to run the next command 
+
+```
+node src/factoryBootstrap.js
+```
+
+LwM2M Servers:
+
+* Coiote
+* Leshan
+* Localhost
+
+To make sure which LwM2M Server is used, please check `src/factoryBootstrap.js line 20` and `node_modules/coap-node/lib/coap-node.js line 236`
+
+By executing the Factory Bootstrap there is also trigered the `Register` and then the `Device Management` interface
+
+### Register
+It is called in `register method from src/factoryBootstrap.js file` and defined in `CoapNode.prototype.register method from node_modules/coap-node/lib/coap-node.js file`. The objects defined in this process are: 0, 1, 3, and 4. 
+
+The objects are defined in: 
+* Server and Security: `CoapNode.prototype.configure method from node_modules/coap-node/lib/coap-node.js file`
+* Device: `init.setupNode method from node_modules/coap-node/lib/init.js file`
+
+### Device Management
+The `GET` request from LwM2M Server is received in `_handle method from node_modules/coap/lib/server.js file`
 
 ## Connection Client-Server
 ### Run Server

@@ -30,7 +30,7 @@ To make sure which LwM2M Server is used, please check `src/factoryBootstrap.js l
 By executing the Factory Bootstrap there is also trigered the `Register` and then the `Device Management` interface
 
 ### Register
-It is called in `register method from src/factoryBootstrap.js file` and defined in `CoapNode.prototype.register method from node_modules/coap-node/lib/coap-node.js file`. The objects defined in this process are: 0, 1, 3, and 4. 
+It is called in `register method from src/factoryBootstrap.js file` and defined in `CoapNode.prototype.register method from node_modules/coap-node/lib/coap-node.js file`. The objects used in this process are: 0, 1, 3, and 4. 
 
 The objects are defined in: 
 * Server and Security: `CoapNode.prototype.configure method from node_modules/coap-node/lib/coap-node.js file`

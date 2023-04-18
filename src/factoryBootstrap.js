@@ -33,6 +33,7 @@ var LwM2MObjects = new SmartObject();
 
 
 // temperature object
+/*
 LwM2MObjects.init(3303, 0, {
     sensorValue: 21,
     units: 'C',
@@ -57,6 +58,7 @@ LwM2MObjects.init(3303, 0, {
 });
 
 console.log(LwM2MObjects.objectList(), "Object list");
+*/
 
 // Object initialization
 var cnode = new CoapNode(deviceName, LwM2MObjects, {version:LwM2MVersion, "lifetime":LwM2MServerLifetime});
